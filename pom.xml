@@ -46,12 +46,7 @@
               <groupId>org.mybatis</groupId>
               <artifactId>mybatis-spring</artifactId>
               <version>1.2.3</version>
-           </dependency>
-              <dependency>
-              <groupId>org.mybatis</groupId>
-              <artifactId>mybatis</artifactId>
-              <version>3.3.0</version>
-           </dependency>
+           </dependency>              
            <!-- java web相关依赖 -->
               <dependency>
               <groupId>taglibs</groupId>
