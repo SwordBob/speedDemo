@@ -2,6 +2,11 @@ package org.seckill.dao;
 
 import static org.junit.Assert.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -29,12 +34,19 @@ public class SeckillDaoTest {
 	}
 	
 	@Test
-	public void testQueryALL() throws Exception{
-		fail("Not yet implemented");
+	public void testQueryAll() throws Exception{
+		List<Seckill> seckills=seckillDao.queryAll(0,100);
+		for (Seckill seckill:seckills){
+			System.out.println(seckill);
+		}
 	}
 	@Test
 	public void testReduceNumber() throws Exception{
-		fail("Not yet implemented");
+		//Date killTime=new Date();
+		DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date killTime = dateFormat2.parse("2016-11-23 22:36:01");
+		int updateCount=seckillDao.reduceNumber(1, killTime);
+		System.out.println("updateCount="+updateCount);
 	}
 
 
