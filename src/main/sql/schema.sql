@@ -28,7 +28,7 @@ VALUES
   
   -- 秒杀成功明细
 -- 用户登录认证相关信息
-CREATE TABLE success_killid(
+CREATE TABLE success_killed(
 seckill_id bigint NOT NULL COMMENT '秒杀商品id',
 user_phone bigint NOT NULL COMMENT '用户手机号',
 state TINYINT NOT NULL DEFAULT -1 COMMENT '状态标示：-1：无效 0：成功 1：已付款',

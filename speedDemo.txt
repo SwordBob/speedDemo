@@ -1,3 +1,5 @@
 xml注释不能加--  或者紧挨着--无空格
 spring配置文件出错行是任意xml文件的对应出错行
 spring调用的文件路径有时不匹配，自行调整
+dto类似entity，侧重于存放跟web交互的实体类； 
+service放与业务逻辑相关的事务操作； dao主要面向与业务无关的，和如Hibernate、MyBatis相关的事务操作。

@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Seckill {
 
-	 private long seckllId;
+	 private long seckillId;
 
 	    private String name;
 
@@ -16,12 +16,12 @@ public class Seckill {
 
 	    private Date createTime;
 
-		public long getSeckllId() {
-			return seckllId;
+		public long getSeckillId() {
+			return seckillId;
 		}
 
-		public void setSeckllId(long seckllId) {
-			this.seckllId = seckllId;
+		public void setSeckillId(long seckllId) {
+			this.seckillId = seckllId;
 		}
 
 		public String getName() {
@@ -66,7 +66,7 @@ public class Seckill {
 
 		@Override
 		public String toString() {
-			return "Seckill [seckllId=" + seckllId + ", name=" + name + ", number=" + number + ", startTime=" + startTime + ", endTime=" + endTime
+			return "Seckill [seckllId=" + seckillId + ", name=" + name + ", number=" + number + ", startTime=" + startTime + ", endTime=" + endTime
 					+ ", createTime=" + createTime + "]";
 		}
 	    
