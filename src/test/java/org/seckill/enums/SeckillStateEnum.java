@@ -2,7 +2,7 @@ package org.seckill.enums;
 
 /**
  * 使用枚举表述常量数据字段
- * Created by tianjun on 2016/8/4.
+ * 
  */
 public enum SeckillStateEnum {
 

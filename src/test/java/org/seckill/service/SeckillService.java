@@ -1,5 +1,6 @@
 package org.seckill.service;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.seckill.dto.Exposer;
@@ -40,7 +41,8 @@ public interface SeckillService {
      * @param seckillId
      * @param userPhone
      * @param md5
+     * @throws ParseException 
      */
    SeckillExecution executeSeckill(long seckillId,long userPhone,String md5)
-   	throws SeckillExpection,RepeatKillException,SeckillCloseException;
+   	throws SeckillExpection,RepeatKillException,SeckillCloseException, ParseException;
 }

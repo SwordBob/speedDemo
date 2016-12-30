@@ -1,5 +1,8 @@
 package org.seckill.service.impl;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -51,7 +54,14 @@ public class SeckillServiceImpl implements SeckillService {
 		Date startTime =seckill.getStartTime();
 		Date endTime=seckill.getEndTime();
 		//系统当前时间
-		Date nowTime=new Date();
+		//Date nowTime=new Date();
+		DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date nowTime=null;
+		try {
+			nowTime = dateFormat2.parse("2016-11-23 22:36:01");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		if(nowTime.getTime()<startTime.getTime()||nowTime.getTime()>endTime.getTime()){
 			return new Exposer(false, seckillId,nowTime.getTime(),startTime.getTime(),endTime.getTime());
 		}
@@ -75,12 +85,14 @@ public class SeckillServiceImpl implements SeckillService {
      * 3: 不是所有的方法都需要事务，如只有一条修改操作，只读操作不需要事务控制。
      */
 	public SeckillExecution executeSeckill(long seckillId, long userPhone, String md5) throws SeckillExpection, RepeatKillException,
-			SeckillCloseException {
+			SeckillCloseException, ParseException {
 		if(md5 == null || !md5.equals(getMD5(seckillId))){
             throw new SeckillExpection("seckill data rewrite");
         }
 		//执行秒杀逻辑 + 记录购买行为
-        Date nowTime = new Date();
+        //Date nowTime = new Date();
+    	DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    	Date nowTime = dateFormat2.parse("2016-11-23 22:36:01");
         try {
             int updateCount = seckillDao.reduceNumber(seckillId,nowTime);
             if(updateCount<=0){
@@ -94,9 +106,9 @@ public class SeckillServiceImpl implements SeckillService {
                     //重复秒杀
                     throw new RepeatKillException("seckill repeat");
                 }else {
-                    //秒杀成
+                    //秒杀成功
                     SuccessKilled successKilled = successKilledDao.queryByIdWithSeckill(seckillId,userPhone);
-                    return new SeckillExecution(seckillId, SeckillStateEnum.SUCCESS,successKilled);
+                    return new SeckillExecution(seckillId,SeckillStateEnum.SUCCESS,successKilled);
                 }
             }
         } catch (SeckillCloseException e1){
